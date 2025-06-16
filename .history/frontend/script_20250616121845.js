@@ -1,7 +1,3 @@
-// API Configuration - Change this URL based on your backend deployment
-const API_BASE_URL = 'https://your-backend-url.onrender.com'; // Change this to your deployed backend URL
-// For local development, use: 'http://127.0.0.1:8000'
-
 // Tab Navigation
 function showTab(tabName) {
     // Hide all tab contents
@@ -76,7 +72,7 @@ function getSingleRoute() {
     loader.style.display = "block";
     resultDiv.innerHTML = "";
 
-    fetch(`${API_BASE_URL}/route?start=${encodeURIComponent(start)}&destination=${encodeURIComponent(destination)}&ship_type=${shipType}`)
+    fetch(`http://127.0.0.1:8000/route?start=${encodeURIComponent(start)}&destination=${encodeURIComponent(destination)}&ship_type=${shipType}`)
         .then(response => response.json())
         .then(data => {
             if (data.detail) {
@@ -122,7 +118,7 @@ function getMultiRoute() {
         optimize: optimize
     });
 
-    fetch(`${API_BASE_URL}/route/multi?${params}`)
+    fetch(`http://127.0.0.1:8000/route/multi?${params}`)
         .then(response => response.json())
         .then(data => {
             if (data.detail) {
@@ -168,7 +164,7 @@ function getStateRoutes() {
         ports_per_state: portsPerState
     });
 
-    fetch(`${API_BASE_URL}/route/states?${params}`)
+    fetch(`http://127.0.0.1:8000/route/states?${params}`)
         .then(response => response.json())
         .then(data => {
             if (data.detail) {

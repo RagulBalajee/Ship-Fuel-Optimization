@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ship Fuel Optimizer - State Route Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-ship"></i> AI Fuel Optimizer</h1>
+        <p class="subtitle">Advanced Ship Route Optimization for All States</p>
+        
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('single')">
+                <i class="fas fa-route"></i> Single Route
+            </button>
+            <button class="tab-btn" onclick="showTab('multi')">
+                <i class="fas fa-map-marked-alt"></i> Multi-Port
+            </button>
+            <button class="tab-btn" onclick="showTab('states')">
+                <i class="fas fa-globe-americas"></i> State Routes
+            </button>
+        </div>
+
+        <!-- Single Route Tab -->
+        <div id="single-tab" class="tab-content active">
+            <h2><i class="fas fa-route"></i> Single Port Route</h2>
+            <div class="input-group">
+                <div class="input-container">
+                    <input type="text" id="start" placeholder=" ">
+                    <label for="start"><i class="fas fa-anchor"></i> Departure Port</label>
+                </div>
+                
+                <div class="input-container">
+                    <input type="text" id="destination" placeholder=" ">
+                    <label for="destination"><i class="fas fa-flag-checkered"></i> Destination Port</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-container">
+                    <select id="ship-type-single">
+                        <option value="standard">Standard Ship</option>
+                        <option value="cargo">Cargo Ship</option>
+                        <option value="tanker">Tanker</option>
+                        <option value="passenger">Passenger Ship</option>
+                    </select>
+                    <label for="ship-type-single"><i class="fas fa-ship"></i> Ship Type</label>
+                </div>
+            </div>
+
+            <button onclick="getSingleRoute()">
+                <i class="fas fa-rocket"></i>
+                Optimize Route
+            </button>
+        </div>
+
+        <!-- Multi-Port Tab -->
+        <div id="multi-tab" class="tab-content">
+            <h2><i class="fas fa-map-marked-alt"></i> Multi-Port Route</h2>
+            <div class="input-group">
+                <div class="input-container">
+                    <textarea id="multi-ports" placeholder=" " rows="3"></textarea>
+                    <label for="multi-ports"><i class="fas fa-list"></i> Port Names (comma-separated)</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-container">
+                    <select id="ship-type-multi">
+                        <option value="standard">Standard Ship</option>
+                        <option value="cargo">Cargo Ship</option>
+                        <option value="tanker">Tanker</option>
+                        <option value="passenger">Passenger Ship</option>
+                    </select>
+                    <label for="ship-type-multi"><i class="fas fa-ship"></i> Ship Type</label>
+                </div>
+                
+                <div class="input-container">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="optimize-route" checked>
+                        <span class="checkmark"></span>
+                        Optimize Route Order
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="getMultiRoute()">
+                <i class="fas fa-route"></i>
+                Plan Multi-Port Route
+            </button>
+        </div>
+
+        <!-- State Routes Tab -->
+        <div id="states-tab" class="tab-content">
+            <h2><i class="fas fa-globe-americas"></i> State-Based Route Planning</h2>
+            
+            <div class="input-group">
+                <div class="input-container">
+                    <textarea id="states-input" placeholder=" " rows="3"></textarea>
+                    <label for="states-input"><i class="fas fa-map"></i> States/Countries (comma-separated)</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-container">
+                    <select id="ship-type-states">
+                        <option value="standard">Standard Ship</option>
+                        <option value="cargo">Cargo Ship</option>
+                        <option value="tanker">Tanker</option>
+                        <option value="passenger">Passenger Ship</option>
+                    </select>
+                    <label for="ship-type-states"><i class="fas fa-ship"></i> Ship Type</label>
+                </div>
+                
+                <div class="input-container">
+                    <input type="number" id="ports-per-state" value="3" min="1" max="10">
+                    <label for="ports-per-state"><i class="fas fa-anchor"></i> Ports per State</label>
+                </div>
+            </div>
+
+            <div class="quick-states">
+                <h3>Quick Select Popular Routes:</h3>
+                <div class="quick-buttons">
+                    <button onclick="setQuickRoute('USA,CAN,MX')">North America</button>
+                    <button onclick="setQuickRoute('GBR,FRA,DEU,NLD')">Western Europe</button>
+                    <button onclick="setQuickRoute('JPN,KOR,CHN')">East Asia</button>
+                    <button onclick="setQuickRoute('AUS,NZL')">Oceania</button>
+                </div>
+                <p style="font-size: 12px; color: #6c757d; margin-top: 10px; text-align: center;">
+                    <i class="fas fa-info-circle"></i> Use country codes (e.g., USA, CAN, GBR) or click the quick selection buttons above
+                </p>
+            </div>
+
+            <button onclick="getStateRoutes()">
+                <i class="fas fa-globe"></i>
+                Plan State Routes
+            </button>
+        </div>
+
+        <!-- Loader -->
+        <div class="loader" id="loader"></div>
+        
+        <!-- Results -->
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
