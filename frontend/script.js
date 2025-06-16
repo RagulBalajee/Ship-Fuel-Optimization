@@ -1,5 +1,5 @@
 // API Configuration - Change this URL based on your backend deployment
-const API_BASE_URL = 'https://your-backend-url.onrender.com'; // Replace with your actual Render URL
+const API_BASE_URL = 'https://ship-fuel-optimization.onrender.com/';
 // For local development, use: 'http://127.0.0.1:8000'
 
 // Tab Navigation
