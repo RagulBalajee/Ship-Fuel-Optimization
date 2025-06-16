@@ -1,5 +1,5 @@
 // API Configuration - Change this URL based on your backend deployment
-const API_BASE_URL = 'https://your-backend-url.onrender.com'; // Change this to your deployed backend URL
+const API_BASE_URL = 'https://your-backend-url.onrender.com'; // Replace with your actual Render URL
 // For local development, use: 'http://127.0.0.1:8000'
 
 // Tab Navigation
@@ -20,6 +20,18 @@ function showTab(tabName) {
     
     // Clear previous results
     document.getElementById('result').innerHTML = '';
+}
+
+// Helper functions for example ports
+function setExamplePorts(start, destination) {
+    document.getElementById('start').value = start;
+    document.getElementById('destination').value = destination;
+    showInfo(`Set route: ${start} → ${destination}`);
+}
+
+function setMultiPorts(ports) {
+    document.getElementById('multi-ports').value = ports;
+    showInfo(`Set multi-port route: ${ports}`);
 }
 
 // Country code mapping for user reference

@@ -12,6 +12,11 @@
         <h1><i class="fas fa-ship"></i> AI Fuel Optimizer</h1>
         <p class="subtitle">Advanced Ship Route Optimization for All States</p>
         
+        <!-- Port Name Help -->
+        <div class="port-help">
+            <p><i class="fas fa-info-circle"></i> <strong>Port Name Format:</strong> Use exact port names like "Sydney.CAN", "Port.Alice", "Bakar", etc. The database contains 8,407 global ports.</p>
+        </div>
+        
         <!-- Navigation Tabs -->
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('single')">
@@ -52,6 +57,13 @@
                 </div>
             </div>
 
+            <div class="example-ports">
+                <p><strong>Example Port Names:</strong></p>
+                <button onclick="setExamplePorts('Sydney.CAN', 'Port.Alice')">Sydney.CAN → Port.Alice</button>
+                <button onclick="setExamplePorts('Bakar', 'Rupert.Inlet')">Bakar → Rupert.Inlet</button>
+                <button onclick="setExamplePorts('Gold.River', 'Tahsis')">Gold.River → Tahsis</button>
+            </div>
+
             <button onclick="getSingleRoute()">
                 <i class="fas fa-rocket"></i>
                 Optimize Route
@@ -86,6 +98,12 @@
                         Optimize Route Order
                     </label>
                 </div>
+            </div>
+
+            <div class="example-ports">
+                <p><strong>Example Multi-Port Routes:</strong></p>
+                <button onclick="setMultiPorts('Sydney.CAN, Port.Alice, Rupert.Inlet')">Sydney.CAN, Port.Alice, Rupert.Inlet</button>
+                <button onclick="setMultiPorts('Bakar, Gold.River, Tahsis')">Bakar, Gold.River, Tahsis</button>
             </div>
 
             <button onclick="getMultiRoute()">
